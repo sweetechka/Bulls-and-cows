@@ -11,6 +11,22 @@ ref class Guess
 	List<int>^ trydata; //Данные попыток
 	List<String^>^ history; //История попыток
 
+	bool Valid(int value)
+	{
+		if (value < 1000 || value > 9999) return false; //неверное количество цифр
+		trydata->Clear();
+		for (int k = 0; k < 4; k++)
+		{
+			int d = value % 10;
+			if (trydata->IndexOf(d) >= 0) return false; //Повторная
+			trydata->Add(d);
+			value /= 10;
+		}
+		//Если добавлены все - то все нормально
+		return true;
+	}
+
+
 public:
 
 	Guess()
