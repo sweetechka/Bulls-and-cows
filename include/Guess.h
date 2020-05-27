@@ -37,6 +37,17 @@ public:
 		SetRandom();
 	}
 
+	//”становить значение
+	//false, если значение не годитс€
+	bool Set(int value)
+	{
+		history->Clear();
+		if (!Valid(value)) return false;
+		data->Clear();
+		for each (int v in trydata) data->Add(v);
+		return true;
+	}
+
 	void SetRandom()
 	{
 		int value;
