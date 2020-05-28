@@ -11,6 +11,11 @@ ref class Guess
 	List<int>^ trydata; //Данные попыток
 	List<String^>^ history; //История попыток
 
+
+
+
+	static Random^ random = gcnew Random();
+
 public:
 
 	Guess()
@@ -41,6 +46,14 @@ public:
 		} while (!Set(value));
 	}
 
+	//установить значение попытки, вывести количество быков и коров 
+	bool TrySet(int value)
+	{
+		if (!Valid(value)) return false; //Только правильные числа
+		//побочный эффект - заполнена trydata
+		history->Add(value.ToString() + " Бык = " + Bull.ToString() + " Корова = " + Cow.ToString());
+		return true;
+	}
 
 	property int Bull
 	{
