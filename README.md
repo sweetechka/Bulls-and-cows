@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/sweetechka/Bulls-and-cows.svg?branch=master)](https://travis-ci.org/github/sweetechka/Bulls-and-cows)
+[![Build Status](https://travis-ci.org/sweetechka/Bulls-and-cows.svg?branch=master)](https://travis-ci.org/github/sweetechka/Bulls-and-cows) [![CodeFactor](https://www.codefactor.io/repository/github/sweetechka/bulls-and-cows/badge)](https://www.codefactor.io/repository/github/sweetechka/bulls-and-cows)
 ---
    ### Курсовой проект по предмету "Технологии разработки программного обеспечения" 
 ---
