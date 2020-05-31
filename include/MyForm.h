@@ -35,22 +35,27 @@ namespace BullsandcowsVisualStudio {
 	private: System::Windows::Forms::GroupBox^ groupBoxLeft;
 	private: System::Windows::Forms::GroupBox^ groupBoxRight;
 
+	// Pictures 	   
 	private: System::Windows::Forms::PictureBox^ pictureBoxBull;
 	private: System::Windows::Forms::PictureBox^ pictureBoxCow;
 
+	// Buttons of setting number
 	private: System::Windows::Forms::Button^ buttonSetLeft;
 	private: System::Windows::Forms::Button^ buttonSetRight;
 	
-
+	// Buttons of randomize number
 	private: System::Windows::Forms::Button^ buttonRandomRight;
 	private: System::Windows::Forms::Button^ buttonRandomLeft;
 
+	// TextBoxes to enter numbers
 	private: System::Windows::Forms::TextBox^ textBoxLeft;
 	private: System::Windows::Forms::TextBox^ textBoxRight;
 
+	// Buttons to accept tries
 	private: System::Windows::Forms::Button^ buttonRightEnter;
 	private: System::Windows::Forms::Button^ buttonLeftEnter;
 
+	// History of tries
 	private: System::Windows::Forms::ListBox^ listBoxLeft;
 	private: System::Windows::Forms::ListBox^ listBoxRight;
 
@@ -59,24 +64,31 @@ namespace BullsandcowsVisualStudio {
 #pragma region 
 
 		   void InitializeComponent(void) {
+			   // Pictures 
 			   this->pictureBoxBull = (gcnew System::Windows::Forms::PictureBox());
 			   this->pictureBoxCow = (gcnew System::Windows::Forms::PictureBox());
 
+			   // Fields of players
 			   this->groupBoxLeft = (gcnew System::Windows::Forms::GroupBox());
 			   this->groupBoxRight = (gcnew System::Windows::Forms::GroupBox());
 
+			   // Buttons of setting number
 			   this->buttonSetLeft = (gcnew System::Windows::Forms::Button());
 			   this->buttonSetRight = (gcnew System::Windows::Forms::Button());
 
+			   // Buttons of randomize number
 			   this->buttonRandomLeft = (gcnew System::Windows::Forms::Button());
 			   this->buttonRandomRight = (gcnew System::Windows::Forms::Button());
 
+			   // TextBoxes to enter numbers
 			   this->textBoxLeft = (gcnew System::Windows::Forms::TextBox());
 			   this->textBoxRight = (gcnew System::Windows::Forms::TextBox());
 
+			   // Buttons to accept tries
 			   this->buttonLeftEnter = (gcnew System::Windows::Forms::Button());
 			   this->buttonRightEnter = (gcnew System::Windows::Forms::Button());
 
+			   // History of tries
 			   this->listBoxLeft = (gcnew System::Windows::Forms::ListBox());
 			   this->listBoxRight = (gcnew System::Windows::Forms::ListBox());
 
@@ -84,9 +96,8 @@ namespace BullsandcowsVisualStudio {
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxCow))->BeginInit();
 			   this->SuspendLayout();
 
-			   // 
+
 			   // groupBoxLeft
-			   // 
 			   this->groupBoxLeft->Controls->Add(this->buttonLeftEnter);
 			   this->groupBoxLeft->Controls->Add(this->textBoxLeft);
 			   this->groupBoxLeft->Controls->Add(this->pictureBoxBull);
@@ -100,9 +111,8 @@ namespace BullsandcowsVisualStudio {
 			   this->groupBoxLeft->TabStop = false;
 			   this->groupBoxLeft->Text = L"Левый";
 
-			   // 
+
 			   // groupBoxRight
-			   // 
 			   this->groupBoxRight->Controls->Add(this->buttonRightEnter);
 			   this->groupBoxRight->Controls->Add(this->pictureBoxCow);
 			   this->groupBoxRight->Controls->Add(this->buttonSetRight);
@@ -111,14 +121,13 @@ namespace BullsandcowsVisualStudio {
 			   this->groupBoxRight->Controls->Add(this->listBoxRight);
 			   this->groupBoxRight->Location = System::Drawing::Point(376, 0);
 			   this->groupBoxRight->Name = L"groupBoxRight";
-			   this->groupBoxRight->Size = System::Drawing::Size(264, 433);
+			   this->groupBoxRight->Size = System::Drawing::Size(269, 433);
 			   this->groupBoxRight->TabIndex = 5;
 			   this->groupBoxRight->TabStop = false;
 			   this->groupBoxRight->Text = L"Правый";
 
-				// 
-				// pictureBoxBull
-				// 
+
+			   // pictureBoxBull
 			   this->pictureBoxBull->Location = System::Drawing::Point(6, 12);
 			   this->pictureBoxBull->Name = L"pictureBoxBull";
 			   this->pictureBoxBull->Size = System::Drawing::Size(252, 146);
@@ -127,21 +136,18 @@ namespace BullsandcowsVisualStudio {
 			   this->pictureBoxBull->TabStop = false;
 			   this->pictureBoxBull->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBoxBull_Paint);
 
-			   // 
+
 			   // pictureBoxCow
-			   // 
 			   this->pictureBoxCow->Location = System::Drawing::Point(7, 15);
 			   this->pictureBoxCow->Name = L"pictureBoxCow";
 			   this->pictureBoxCow->Size = System::Drawing::Size(253, 146);
 			   this->pictureBoxCow->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			   this->pictureBoxCow->TabIndex = 3;
 			   this->pictureBoxCow->TabStop = false;
-			   //this->pictureBoxCow->Click += gcnew System::EventHandler(this, &MyForm::pictureBoxCow_Click);
 			   this->pictureBoxCow->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBoxCow_Paint);
 
-			   // 
+
 			   // buttonSetLeft
-			   // 
 			   this->buttonSetLeft->Location = System::Drawing::Point(6, 169);
 			   this->buttonSetLeft->Name = L"buttonSetLeft";
 			   this->buttonSetLeft->Size = System::Drawing::Size(84, 23);
@@ -150,9 +156,8 @@ namespace BullsandcowsVisualStudio {
 			   this->buttonSetLeft->UseVisualStyleBackColor = true;
 			   //this->buttonSetLeft->Click += gcnew System::EventHandler(this, &MyForm::buttonSetLeft_Click);
 
-			   // 
+
 			   // buttonSetRight
-			   // 
 			   this->buttonSetRight->Location = System::Drawing::Point(6, 169);
 			   this->buttonSetRight->Name = L"buttonSetRight";
 			   this->buttonSetRight->Size = System::Drawing::Size(84, 23);
@@ -161,9 +166,8 @@ namespace BullsandcowsVisualStudio {
 			   this->buttonSetRight->UseVisualStyleBackColor = true;
 			   //this->buttonSetRight->Click += gcnew System::EventHandler(this, &MyForm::buttonSetRight_Click);
 
-			   // 
+
 			   // buttonRandomLeft
-			   // 
 			   this->buttonRandomLeft->Location = System::Drawing::Point(93, 169);
 			   this->buttonRandomLeft->Name = L"buttonRandomLeft";
 			   this->buttonRandomLeft->Size = System::Drawing::Size(65, 23);
@@ -172,9 +176,8 @@ namespace BullsandcowsVisualStudio {
 			   this->buttonRandomLeft->UseVisualStyleBackColor = true;
 			   //this->buttonRandomLeft->Click += gcnew System::EventHandler(this, &MyForm::buttonRandomLeft_Click);
 
-			   // 
+
 			   // buttonRandomRight
-			   // 
 			   this->buttonRandomRight->Location = System::Drawing::Point(93, 169);
 			   this->buttonRandomRight->Name = L"buttonRandomRight";
 			   this->buttonRandomRight->Size = System::Drawing::Size(62, 23);
@@ -183,73 +186,65 @@ namespace BullsandcowsVisualStudio {
 			   this->buttonRandomRight->UseVisualStyleBackColor = true;
 			   //this->buttonRandomRight->Click += gcnew System::EventHandler(this, &MyForm::buttonRandomRight_Click);
 
-			   // 
+
 			   // textBoxLeft
-			   // 
 			   this->textBoxLeft->Location = System::Drawing::Point(164, 171);
 			   this->textBoxLeft->Name = L"textBoxLeft";
 			   this->textBoxLeft->Size = System::Drawing::Size(57, 20);
 			   this->textBoxLeft->TabIndex = 1;
 			   this->textBoxLeft->Text = L"1234";
 			   this->textBoxLeft->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-			  // this->textBoxLeft->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::textBoxLeft_KeyDown);
+			   // this->textBoxLeft->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::textBoxLeft_KeyDown);
 
-			   // 
+
 			   // textBoxRight
-			   // 
 			   this->textBoxRight->Location = System::Drawing::Point(164, 171);
 			   this->textBoxRight->Name = L"textBoxRight";
 			   this->textBoxRight->Size = System::Drawing::Size(57, 20);
 			   this->textBoxRight->TabIndex = 1;
 			   this->textBoxRight->Text = L"1234";
 			   this->textBoxRight->TextAlign = System::Windows::Forms::HorizontalAlignment::Right;
-			 // this->textBoxRight->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::textBoxRight_KeyDown);
+			   // this->textBoxRight->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::textBoxRight_KeyDown);
 
-			   // 
+
 			   // buttonRightEnter
-			   // 
 			   this->buttonRightEnter->Location = System::Drawing::Point(227, 169);
 			   this->buttonRightEnter->Name = L"buttonRightEnter";
 			   this->buttonRightEnter->Size = System::Drawing::Size(31, 23);
 			   this->buttonRightEnter->TabIndex = 5;
 			   this->buttonRightEnter->Text = L"!";
 			   this->buttonRightEnter->UseVisualStyleBackColor = true;
-			  // this->buttonRightEnter->Click += gcnew System::EventHandler(this, &MyForm::buttonRightEnter_Click);
+			   // this->buttonRightEnter->Click += gcnew System::EventHandler(this, &MyForm::buttonRightEnter_Click);
 
-			   // 
+
 			   // buttonLeftEnter
-			   // 
 			   this->buttonLeftEnter->Location = System::Drawing::Point(227, 169);
 			   this->buttonLeftEnter->Name = L"buttonLeftEnter";
 			   this->buttonLeftEnter->Size = System::Drawing::Size(31, 23);
 			   this->buttonLeftEnter->TabIndex = 4;
 			   this->buttonLeftEnter->Text = L"!";
 			   this->buttonLeftEnter->UseVisualStyleBackColor = true;
-			  // this->buttonLeftEnter->Click += gcnew System::EventHandler(this, &MyForm::buttonLeftEnter_Click);
+			   // this->buttonLeftEnter->Click += gcnew System::EventHandler(this, &MyForm::buttonLeftEnter_Click);
 
-			   // 
+
 			   // listBoxLeft
-			   // 
 			   this->listBoxLeft->FormattingEnabled = true;
 			   this->listBoxLeft->Location = System::Drawing::Point(12, 284);
 			   this->listBoxLeft->Name = L"listBoxLeft";
 			   this->listBoxLeft->Size = System::Drawing::Size(246, 147);
 			   this->listBoxLeft->TabIndex = 2;
 
-			   // 
+
 			   // listBoxRight
-			   // 
 			   this->listBoxRight->FormattingEnabled = true;
-			   this->listBoxRight->Location = System::Drawing::Point(6, 288);
+			   this->listBoxRight->Location = System::Drawing::Point(12, 284);
 			   this->listBoxRight->Name = L"listBoxRight";
-			   this->listBoxRight->Size = System::Drawing::Size(253, 147);
+			   this->listBoxRight->Size = System::Drawing::Size(246, 147);
 			   this->listBoxRight->TabIndex = 2;
-			 // this->listBoxRight->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listBoxRight_SelectedIndexChanged);
+			   // this->listBoxRight->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listBoxRight_SelectedIndexChanged);
 
 
-			   // 
 			   // MyForm
-			   // 
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			   this->BackColor = System::Drawing::Color::White;
@@ -273,6 +268,7 @@ namespace BullsandcowsVisualStudio {
 		   Bitmap^ bull = nullptr;
 		   Bitmap^ cow = nullptr;
 
+	// Bull Picture
 	private: System::Void pictureBoxBull_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e)
 	{
 		if (bull == nullptr)
@@ -283,6 +279,7 @@ namespace BullsandcowsVisualStudio {
 		}
 	}
 
+	// Cow Picture	
 	private: System::Void pictureBoxCow_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 		if (cow == nullptr)
 		{
