@@ -2,7 +2,7 @@
 
 #include "Guess.h" //Угадайка
 
-namespace BullsandcowsVisualStudio {
+namespace GAME {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -42,7 +42,7 @@ namespace BullsandcowsVisualStudio {
 	// Buttons of setting number
 	private: System::Windows::Forms::Button^ buttonSetLeft;
 	private: System::Windows::Forms::Button^ buttonSetRight;
-	
+
 	// Buttons of randomize number
 	private: System::Windows::Forms::Button^ buttonRandomRight;
 	private: System::Windows::Forms::Button^ buttonRandomLeft;
@@ -58,6 +58,12 @@ namespace BullsandcowsVisualStudio {
 	// History of tries
 	private: System::Windows::Forms::ListBox^ listBoxLeft;
 	private: System::Windows::Forms::ListBox^ listBoxRight;
+
+	// Checbox to switch gamemode
+	private: System::Windows::Forms::CheckBox^ checkBox;
+
+	// Button START
+	private: System::Windows::Forms::Button^ buttonStart;
 
 	private: System::ComponentModel::Container^ components;
 
@@ -91,6 +97,12 @@ namespace BullsandcowsVisualStudio {
 			   // History of tries
 			   this->listBoxLeft = (gcnew System::Windows::Forms::ListBox());
 			   this->listBoxRight = (gcnew System::Windows::Forms::ListBox());
+
+			   // Checkbox to switch gamemode
+			   this->checkBox = (gcnew System::Windows::Forms::CheckBox());
+
+			   // Button START
+			   this->buttonStart = (gcnew System::Windows::Forms::Button());
 
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxBull))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxCow))->BeginInit();
@@ -241,16 +253,40 @@ namespace BullsandcowsVisualStudio {
 			   this->listBoxRight->Name = L"listBoxRight";
 			   this->listBoxRight->Size = System::Drawing::Size(246, 147);
 			   this->listBoxRight->TabIndex = 2;
-			   // this->listBoxRight->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::listBoxRight_SelectedIndexChanged);
+
+			   // 
+			   // checkBox
+			   // 
+			   this->checkBox->AutoSize = true;
+			   this->checkBox->Checked = true;
+			   this->checkBox->CheckState = System::Windows::Forms::CheckState::Checked;
+			   this->checkBox->Location = System::Drawing::Point(277, 9);
+			   this->checkBox->Name = L"checkBox";
+			   this->checkBox->Size = System::Drawing::Size(92, 17);
+			   this->checkBox->TabIndex = 4;
+			   this->checkBox->Text = L"Игра вдвоем";
+			   this->checkBox->UseVisualStyleBackColor = true;
+
+			   // 
+			   // buttonStart
+			   // 
+			   this->buttonStart->Location = System::Drawing::Point(281, 78);
+			   this->buttonStart->Name = L"buttonStart";
+			   this->buttonStart->Size = System::Drawing::Size(88, 23);
+			   this->buttonStart->TabIndex = 0;
+			   this->buttonStart->Text = L"Начали";
+			   this->buttonStart->UseVisualStyleBackColor = true;
 
 
 			   // MyForm
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			   this->BackColor = System::Drawing::Color::White;
-			   this->ClientSize = System::Drawing::Size(642, 433);
-			   this->Controls->Add(this->groupBoxLeft);
-			   this->Controls->Add(this->groupBoxRight);
+			   this->BackColor = System::Drawing::Color::White; // color 
+			   this->ClientSize = System::Drawing::Size(642, 433); // size 
+			   this->Controls->Add(this->groupBoxLeft); // field of left player
+			   this->Controls->Add(this->groupBoxRight); // fielf of right player
+			   this->Controls->Add(this->checkBox); // checkbox of switching gamemode
+			   this->Controls->Add(this->buttonStart); // button START
 			   this->DoubleBuffered = true;
 			   this->MaximizeBox = false;
 			   this->MaximumSize = System::Drawing::Size(658, 472);
@@ -268,7 +304,7 @@ namespace BullsandcowsVisualStudio {
 		   Bitmap^ bull = nullptr;
 		   Bitmap^ cow = nullptr;
 
-	// Bull Picture
+		   // Bull Picture
 	private: System::Void pictureBoxBull_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e)
 	{
 		if (bull == nullptr)
@@ -279,13 +315,13 @@ namespace BullsandcowsVisualStudio {
 		}
 	}
 
-	// Cow Picture	
+		   // Cow Picture	
 	private: System::Void pictureBoxCow_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 		if (cow == nullptr)
 		{
-				   if (File::Exists("cow.png"))
-					   cow = gcnew Bitmap("cow.png");
-				   pictureBoxCow->Image = cow;
+			if (File::Exists("cow.png"))
+				cow = gcnew Bitmap("cow.png");
+			pictureBoxCow->Image = cow;
 		}
 	}
 
