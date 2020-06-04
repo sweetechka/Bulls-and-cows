@@ -1,3 +1,0 @@
-C:\Users\User\Desktop\TRPO\Trpo-kyrsach\Bulls and cows - Visual Studio\Bulls and cows - Visual Studio\Debug\Bulls and cows - Visual Studio.vcxprojAssemblyReference.cache
-C:\Users\User\Desktop\TRPO\Trpo-kyrsach\Bulls and cows - Visual Studio\Bulls and cows - Visual Studio\Debug\BullsandcowsVisualStudio.MyForm.resources
-C:\Users\User\Desktop\TRPO\Trpo-kyrsach\Bulls and cows - Visual Studio\Bulls and cows - Visual Studio\Debug\Bulls and cows - Visual Studio.vcxproj.GenerateResource.cache
