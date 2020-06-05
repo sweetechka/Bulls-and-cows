@@ -2,8 +2,8 @@
 
 /*Класс "угадайка"*/
 
-using namespace System; 
-using namespace System::Collections::Generic; 
+using namespace System;
+using namespace System::Collections::Generic;
 
 ref class Guess
 {
@@ -15,26 +15,20 @@ ref class Guess
 	bool Valid(int value)
 	{
 		if (value < 1000 || value > 9999) return false; //неверное количество цифр
-		trydata->Clear();
+		//trydata->Clear();
 		for (int k = 0; k < 4; k++)
 		{
 			int d = value % 10;
-			if (trydata->IndexOf(d) >= 0) return false; //Повторная
-			trydata->Add(d);
+			//if (trydata->IndexOf(d) >= 0) return false; //Повторная
+			//trydata->Add(d);
 			value /= 10;
 		}
 		//Если добавлены все - то все нормально
 		return true;
 	}
 
-
-
-
-
-
 	static Random^ random = gcnew Random();
 
->>>>>>> Guess
 public:
 
 	Guess()
@@ -49,10 +43,10 @@ public:
 	//false, если значение не годится
 	bool Set(int value)
 	{
-		history->Clear();
+		//history->Clear();
 		if (!Valid(value)) return false;
-		data->Clear();
-		for each (int v in trydata) data->Add(v);
+		//data->Clear();
+		//for each (int v in trydata) data->Add(v);
 		return true;
 	}
 

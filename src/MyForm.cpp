@@ -1,17 +1,17 @@
-#include "MyForm.h" 
-
-using namespace System; 
-using namespace System::Windows::Forms; 
-
+#include "MyForm.h" //Главная форма - там
+using namespace System; //Эта библиотека именно сейчас не используется, но может пригодиться
+using namespace System::Windows::Forms; //Там все о формах
 [STAThread]
 int main(array<String^>^ args)  //Точка входа
 {
 	//Обязательные действия
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-
-	BullsandcowsVisualStudio::MyForm form;
-
-	//Запуск приложения
-	Application::Run(%form);
+	//Это - форма
+	Bullsandcowsproject::MyForm form;
+	//Запустить приложение, главная форма - эта
+	Application::Run(% form);
 }
+
+
+	
