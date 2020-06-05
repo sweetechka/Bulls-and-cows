@@ -166,7 +166,7 @@ namespace Bullsandcowsproject {
 			   this->buttonSetLeft->TabIndex = 6;
 			   this->buttonSetLeft->Text = L"Задать число";
 			   this->buttonSetLeft->UseVisualStyleBackColor = true;
-			   //this->buttonSetLeft->Click += gcnew System::EventHandler(this, &MyForm::buttonSetLeft_Click);
+			   this->buttonSetLeft->Click += gcnew System::EventHandler(this, &MyForm::buttonSetLeft_Click);
 
 
 			   // buttonSetRight
@@ -176,7 +176,7 @@ namespace Bullsandcowsproject {
 			   this->buttonSetRight->TabIndex = 6;
 			   this->buttonSetRight->Text = L"Задать число";
 			   this->buttonSetRight->UseVisualStyleBackColor = true;
-			   //this->buttonSetRight->Click += gcnew System::EventHandler(this, &MyForm::buttonSetRight_Click);
+			   this->buttonSetRight->Click += gcnew System::EventHandler(this, &MyForm::buttonSetRight_Click);
 
 
 			   // buttonRandomLeft
@@ -186,7 +186,7 @@ namespace Bullsandcowsproject {
 			   this->buttonRandomLeft->TabIndex = 4;
 			   this->buttonRandomLeft->Text = L"Случайно";
 			   this->buttonRandomLeft->UseVisualStyleBackColor = true;
-			   //this->buttonRandomLeft->Click += gcnew System::EventHandler(this, &MyForm::buttonRandomLeft_Click);
+			   this->buttonRandomLeft->Click += gcnew System::EventHandler(this, &MyForm::buttonRandomLeft_Click);
 
 
 			   // buttonRandomRight
@@ -196,7 +196,7 @@ namespace Bullsandcowsproject {
 			   this->buttonRandomRight->TabIndex = 5;
 			   this->buttonRandomRight->Text = L"Случайно";
 			   this->buttonRandomRight->UseVisualStyleBackColor = true;
-			   //this->buttonRandomRight->Click += gcnew System::EventHandler(this, &MyForm::buttonRandomRight_Click);
+			   this->buttonRandomRight->Click += gcnew System::EventHandler(this, &MyForm::buttonRandomRight_Click);
 
 
 			   // textBoxLeft
@@ -254,9 +254,7 @@ namespace Bullsandcowsproject {
 			   this->listBoxRight->Size = System::Drawing::Size(246, 147);
 			   this->listBoxRight->TabIndex = 2;
 
-			   // 
 			   // checkBox
-			   // 
 			   this->checkBox->AutoSize = true;
 			   this->checkBox->Checked = true;
 			   this->checkBox->CheckState = System::Windows::Forms::CheckState::Checked;
@@ -268,9 +266,7 @@ namespace Bullsandcowsproject {
 			   this->checkBox->UseVisualStyleBackColor = true;
 			   this->checkBox->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox_CheckedChanged);
 
-			   // 
 			   // buttonStart
-			   // 
 			   this->buttonStart->Location = System::Drawing::Point(281, 78);
 			   this->buttonStart->Name = L"buttonStart";
 			   this->buttonStart->Size = System::Drawing::Size(88, 23);
@@ -330,7 +326,6 @@ namespace Bullsandcowsproject {
 			}
 		}
 
-
 		// CheckBox Click
 		private: System::Void checkBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		groupBoxRight->Visible = checkBox->Checked;
@@ -352,7 +347,8 @@ namespace Bullsandcowsproject {
 			LeftPlayer = gcnew Guess();
 			RightPlayer = gcnew Guess();
 		}
-		   bool Play = false; // variable responsible for the status of the started game
+
+		bool Play = false; // variable responsible for the status of the started game
 
 		// Click on START
 		private: System::Void buttonStart_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -380,5 +376,58 @@ namespace Bullsandcowsproject {
 				}
 				Refresh(); //Всех
 			}
+		
+		// Click on button 'RANDOM"
+		private: System::Void buttonRandomLeft_Click(System::Object^ sender, System::EventArgs^ e)
+				{
+					if (Play)
+					{
+						MessageBox::Show("Мы играем!");
+						return;
+					}
+					LeftPlayer->SetRandom();
+				}
+
+		// Click on button 'RANDOM"
+		private: System::Void buttonRandomRight_Click(System::Object^ sender, System::EventArgs^ e) {
+					if (Play)
+					{
+						MessageBox::Show("Мы играем!");
+						return;
+					}
+					RightPlayer->SetRandom();
+				}
+		
+		// Click on button 'SET'
+		private: System::Void buttonSetLeft_Click(System::Object^ sender, System::EventArgs^ e)
+				{
+					if (Play)
+					{
+						MessageBox::Show("Мы играем!");
+						return;
+					}
+					int value = 0;
+					int::TryParse(textBoxLeft->Text, value);
+					if (!LeftPlayer->Set(value))
+						MessageBox::Show("Не годится");
+					else
+						textBoxLeft->Text = "1234";
+				}
+
+		// Click on button 'SET'
+		private: System::Void buttonSetRight_Click(System::Object^ sender, System::EventArgs^ e) {
+					if (Play)
+					{
+						MessageBox::Show("Мы играем!");
+						return;
+					}
+					int value = 0;
+					int::TryParse(textBoxRight->Text, value);
+					if (!RightPlayer->Set(value))
+						MessageBox::Show("Не годится");
+					else
+						textBoxRight->Text = "1234";
+
+				}
 	};
 }
