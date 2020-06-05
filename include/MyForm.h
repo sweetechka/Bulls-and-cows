@@ -2,7 +2,7 @@
 
 #include "Guess.h" //Угадайка
 
-namespace GAME {
+namespace Bullsandcowsproject {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -31,38 +31,38 @@ namespace GAME {
 			}
 		}
 
-	// Fields of players
+		// Fields of players
 	private: System::Windows::Forms::GroupBox^ groupBoxLeft;
 	private: System::Windows::Forms::GroupBox^ groupBoxRight;
 
-	// Pictures 	   
+		   // Pictures 	   
 	private: System::Windows::Forms::PictureBox^ pictureBoxBull;
 	private: System::Windows::Forms::PictureBox^ pictureBoxCow;
 
-	// Buttons of setting number
+		   // Buttons of setting number
 	private: System::Windows::Forms::Button^ buttonSetLeft;
 	private: System::Windows::Forms::Button^ buttonSetRight;
 
-	// Buttons of randomize number
+		   // Buttons of randomize number
 	private: System::Windows::Forms::Button^ buttonRandomRight;
 	private: System::Windows::Forms::Button^ buttonRandomLeft;
 
-	// TextBoxes to enter numbers
+		   // TextBoxes to enter numbers
 	private: System::Windows::Forms::TextBox^ textBoxLeft;
 	private: System::Windows::Forms::TextBox^ textBoxRight;
 
-	// Buttons to accept tries
+		   // Buttons to accept tries
 	private: System::Windows::Forms::Button^ buttonRightEnter;
 	private: System::Windows::Forms::Button^ buttonLeftEnter;
 
-	// History of tries
+		   // History of tries
 	private: System::Windows::Forms::ListBox^ listBoxLeft;
 	private: System::Windows::Forms::ListBox^ listBoxRight;
 
-	// Checbox to switch gamemode
+		   // Checbox to switch gamemode
 	private: System::Windows::Forms::CheckBox^ checkBox;
 
-	// Button START
+		   // Button START
 	private: System::Windows::Forms::Button^ buttonStart;
 
 	private: System::ComponentModel::Container^ components;
@@ -266,6 +266,7 @@ namespace GAME {
 			   this->checkBox->TabIndex = 4;
 			   this->checkBox->Text = L"Игра вдвоем";
 			   this->checkBox->UseVisualStyleBackColor = true;
+			   this->checkBox->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox_CheckedChanged);
 
 			   // 
 			   // buttonStart
@@ -276,6 +277,7 @@ namespace GAME {
 			   this->buttonStart->TabIndex = 0;
 			   this->buttonStart->Text = L"Начали";
 			   this->buttonStart->UseVisualStyleBackColor = true;
+			   this->buttonStart->Click += gcnew System::EventHandler(this, &MyForm::buttonStart_Click);
 
 
 			   // MyForm
@@ -301,29 +303,82 @@ namespace GAME {
 
 #pragma endregion
 
-		   Bitmap^ bull = nullptr;
-		   Bitmap^ cow = nullptr;
+		// Pixels for pictures
+		Bitmap^ bull = nullptr;
+		Bitmap^ cow = nullptr;
 
-		   // Bull Picture
-	private: System::Void pictureBoxBull_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e)
-	{
-		if (bull == nullptr)
+
+		// Bull Picture
+		private: System::Void pictureBoxBull_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e)
 		{
-			if (File::Exists("Bull.png"))
-				bull = gcnew Bitmap("Bull.png");
-			pictureBoxBull->Image = bull;
+			if (bull == nullptr)
+			{
+				if (File::Exists("Bull.png"))
+					bull = gcnew Bitmap("Bull.png");
+				pictureBoxBull->Image = bull;
+			}
 		}
-	}
 
-		   // Cow Picture	
-	private: System::Void pictureBoxCow_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-		if (cow == nullptr)
-		{
-			if (File::Exists("cow.png"))
-				cow = gcnew Bitmap("cow.png");
-			pictureBoxCow->Image = cow;
+
+		// Cow Picture	
+		private: System::Void pictureBoxCow_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+			if (cow == nullptr)
+			{
+				if (File::Exists("cow.png"))
+					cow = gcnew Bitmap("cow.png");
+				pictureBoxCow->Image = cow;
+			}
 		}
-	}
 
+
+		// CheckBox Click
+		private: System::Void checkBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		groupBoxRight->Visible = checkBox->Checked;
+		groupBoxRight->Enabled = checkBox->Checked;
+
+		if (checkBox->Checked)
+				Width = groupBoxRight->Right + 15;
+		else
+				Width = buttonStart->Right + 15;
+
+		}
+
+		// Players
+		   Guess^ LeftPlayer;
+		   Guess^ RightPlayer;
+
+		// Memory for players
+		private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+			LeftPlayer = gcnew Guess();
+			RightPlayer = gcnew Guess();
+		}
+		   bool Play = false; // variable responsible for the status of the started game
+
+		// Click on START
+		private: System::Void buttonStart_Click(System::Object^ sender, System::EventArgs^ e) {
+			listBoxLeft->Items->Clear();
+			listBoxRight->Items->Clear();
+			if (!Play) //Из "вне игры"
+			{
+				Play = true;
+				//label->Text = "<===";
+					groupBoxLeft->Enabled = true;
+					groupBoxRight->Enabled = false;
+					textBoxLeft->Focus();
+					//label->Visible = true;
+					buttonStart->Text = "Надоело";
+				}
+				else
+				{
+					groupBoxLeft->Enabled = true;
+					groupBoxRight->Enabled = checkBox->Checked;
+					LeftPlayer->SetRandom();
+					RightPlayer->SetRandom();
+					//label->Visible = false;
+					buttonStart->Text = "Начали";
+					Play = false;
+				}
+				Refresh(); //Всех
+			}
 	};
 }
