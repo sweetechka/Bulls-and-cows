@@ -1,8 +1,7 @@
-language: csharp
-solution: Bullandcowsproject.sln
-mono:
-  - latest
-before_install:
-  - sudo apt-get install libcanberra-gtk-module
-before_script:
-  - nuget restore Bullandcowsproject.sln
+language: C++
+
+dist: xenial
+
+script:
+  - git ls-files /src | xargs clang-format -i && git diff --exit-code
+  - git ls-files /UnitTest | xargs clang-format -i && git diff --exit-code
