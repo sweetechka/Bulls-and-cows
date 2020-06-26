@@ -1,1 +1,8 @@
-enabled: false
+language: csharp
+solution: Bullandcowsproject.sln
+mono:
+  - latest
+before_install:
+  - sudo apt-get install libcanberra-gtk-module
+before_script:
+  - nuget restore Bullandcowsproject.sln
