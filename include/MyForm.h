@@ -67,6 +67,13 @@ namespace Bullsandcowsproject {
 
 	private: System::ComponentModel::Container^ components;
 
+	private: System::Windows::Forms::Label^ labelStep;
+
+	private: System::Windows::Forms::Label^ label;
+
+	private: System::Windows::Forms::PictureBox^ pictureBoxLeft;
+	private: System::Windows::Forms::PictureBox^ pictureBoxRight;
+
 #pragma region 
 
 		   void InitializeComponent(void) {
@@ -104,6 +111,13 @@ namespace Bullsandcowsproject {
 			   // Button START
 			   this->buttonStart = (gcnew System::Windows::Forms::Button());
 
+			   this->labelStep = (gcnew System::Windows::Forms::Label());
+
+			   this->label = (gcnew System::Windows::Forms::Label());
+
+			   this->pictureBoxLeft = (gcnew System::Windows::Forms::PictureBox());
+			   this->pictureBoxRight = (gcnew System::Windows::Forms::PictureBox());
+
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxBull))->BeginInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxCow))->BeginInit();
 			   this->SuspendLayout();
@@ -112,6 +126,7 @@ namespace Bullsandcowsproject {
 			   // groupBoxLeft
 			   this->groupBoxLeft->Controls->Add(this->buttonLeftEnter);
 			   this->groupBoxLeft->Controls->Add(this->textBoxLeft);
+			   this->groupBoxLeft->Controls->Add(this->pictureBoxLeft);
 			   this->groupBoxLeft->Controls->Add(this->pictureBoxBull);
 			   this->groupBoxLeft->Controls->Add(this->buttonSetLeft);
 			   this->groupBoxLeft->Controls->Add(this->buttonRandomLeft);
@@ -127,6 +142,7 @@ namespace Bullsandcowsproject {
 			   // groupBoxRight
 			   this->groupBoxRight->Controls->Add(this->buttonRightEnter);
 			   this->groupBoxRight->Controls->Add(this->pictureBoxCow);
+			   this->groupBoxRight->Controls->Add(this->pictureBoxRight);
 			   this->groupBoxRight->Controls->Add(this->buttonSetRight);
 			   this->groupBoxRight->Controls->Add(this->buttonRandomRight);
 			   this->groupBoxRight->Controls->Add(this->textBoxRight);
@@ -275,6 +291,44 @@ namespace Bullsandcowsproject {
 			   this->buttonStart->UseVisualStyleBackColor = true;
 			   this->buttonStart->Click += gcnew System::EventHandler(this, &MyForm::buttonStart_Click);
 
+			   // labelStep
+			   this->labelStep->AutoSize = true;
+			   this->labelStep->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->labelStep->Location = System::Drawing::Point(278, 121);
+			   this->labelStep->Name = L"labelStep";
+			   this->labelStep->Size = System::Drawing::Size(74, 20);
+			   this->labelStep->TabIndex = 8;
+			   this->labelStep->Text = L"0 ходов";
+
+			   // label
+			   this->label->AutoSize = true;
+			   this->label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(204)));
+			   this->label->Location = System::Drawing::Point(278, 33);
+			   this->label->Name = L"label";
+			   this->label->Size = System::Drawing::Size(97, 37);
+			   this->label->TabIndex = 8;
+			   this->label->Text = L"<===";
+			   this->label->Visible = false;
+
+
+			    // pictureBoxLeft
+			   this->pictureBoxLeft->Location = System::Drawing::Point(7, 206);
+			   this->pictureBoxLeft->Name = L"pictureBoxLeft";
+			   this->pictureBoxLeft->Size = System::Drawing::Size(252, 62);
+			   this->pictureBoxLeft->TabIndex = 0;
+			   this->pictureBoxLeft->TabStop = false;
+			 //  this->pictureBoxLeft->Click += gcnew System::EventHandler(this, &MyForm::pictureBoxLeft_Click);
+			  // this->pictureBoxLeft->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBoxLeft_Paint);
+			   
+			   // pictureBoxRight
+			   this->pictureBoxRight->Location = System::Drawing::Point(6, 207);
+			   this->pictureBoxRight->Name = L"pictureBoxRight";
+			   this->pictureBoxRight->Size = System::Drawing::Size(253, 62);
+			   this->pictureBoxRight->TabIndex = 0;
+			   this->pictureBoxRight->TabStop = false;
+			 //  this->pictureBoxRight->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBoxRight_Paint);
 
 			   // MyForm
 			   this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -285,12 +339,16 @@ namespace Bullsandcowsproject {
 			   this->Controls->Add(this->groupBoxRight); // fielf of right player
 			   this->Controls->Add(this->checkBox); // checkbox of switching gamemode
 			   this->Controls->Add(this->buttonStart); // button START
+			   this->Controls->Add(this->labelStep);
+			   this->Controls->Add(this->label);
 			   this->DoubleBuffered = true;
 			   this->MaximizeBox = false;
 			   this->MaximumSize = System::Drawing::Size(658, 472);
 			   this->MinimizeBox = false;
 			   this->Name = L"MyForm";
 			   this->Text = L"Быки и коровы";
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxLeft))->EndInit();
+			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxRight))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxBull))->EndInit();
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxCow))->EndInit();
 			   this->ResumeLayout(false);
@@ -347,6 +405,79 @@ namespace Bullsandcowsproject {
 			LeftPlayer = gcnew Guess();
 			RightPlayer = gcnew Guess();
 		}
+			   
+		   void CopyHistory(Guess^ player, ListBox^ listBox)
+		   {
+			   listBox->Items->Clear();
+			   for each (auto s in player->History)
+				   listBox->Items->Add(s);
+			   listBox->SelectedIndex = listBox->Items->Count - 1;
+		   }
+
+    private: System::Void textBoxLeft_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e)
+{
+	if (!Play) return;
+	if (e == nullptr || e->KeyCode == Keys::Return)
+	{
+		if (e) e->Handled = true;
+		int value;
+		int::TryParse(textBoxLeft->Text, value);
+		if (!LeftPlayer->TrySet(value))
+		{
+			MessageBox::Show("Не годится");
+			return;
+		}
+		CopyHistory(LeftPlayer, listBoxLeft);
+		pictureBoxLeft->Refresh(); //Обновить картинку
+
+		if (LeftPlayer->Bull == 4)
+		{
+			MessageBox::Show("Выиграл ЛЕВЫЙ");
+			buttonStart_Click(nullptr, nullptr);
+			return;
+		}
+
+		if (checkBox->Checked) //Игра вдвоем - передать ход
+		{
+			label->Text = "===>";
+			groupBoxLeft->Enabled = false;
+			groupBoxRight->Enabled = true;
+			textBoxRight->Focus();
+		}
+
+	}
+}
+	private: System::Void textBoxRight_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (!Play) return;
+		if (e == nullptr || e->KeyCode == Keys::Return)
+		{
+			if (e) e->Handled = true;
+			int value;
+			int::TryParse(textBoxRight->Text, value);
+			if (!RightPlayer->TrySet(value))
+			{
+				MessageBox::Show("Не годится");
+				return;
+			}
+			CopyHistory(RightPlayer, listBoxRight);
+			pictureBoxRight->Refresh(); //Обновить картинку
+			if (RightPlayer->Bull == 4)
+			{
+				MessageBox::Show("Выиграл ПРАВЫЙ");
+				buttonStart_Click(nullptr, nullptr);
+				return;
+			}
+
+			if (checkBox->Checked) //Игра вдвоем - передать ход
+			{
+				label->Text = "<===";
+				groupBoxLeft->Enabled = true;
+				groupBoxRight->Enabled = false;
+				textBoxLeft->Focus();
+			}
+
+		}
+	}
 
 		bool Play = false; // variable responsible for the status of the started game
 
@@ -376,6 +507,7 @@ namespace Bullsandcowsproject {
 				}
 				Refresh(); //Всех
 			}
+
 		
 		// Click on button 'RANDOM"
 		private: System::Void buttonRandomLeft_Click(System::Object^ sender, System::EventArgs^ e)
