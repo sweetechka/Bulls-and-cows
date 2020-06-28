@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "..\Bulls and cows - Visual Studio\Guess.h"
+#include "..\Guess.h"
 
 using namespace System;
 using namespace System::Text;
@@ -30,46 +30,46 @@ namespace UnitTest
 		};
 
 
-#pragma endregion 
+#pragma endregion
 
 		[TestMethod]
 		void TestMethodSet()
 		{
 			Guess^ g = gcnew Guess();
-			Assert::AreEqual(g->Set(1111), false); //Одинаковые цифры
-			Assert::AreEqual(g->Set(123), false); //Начинается с 0
-			Assert::AreEqual(g->Set(1234), true); //Верно
+			Assert::AreEqual(g->Set(1111), false); //Same numbers
+			Assert::AreEqual(g->Set(123), false); //Starts from 0
+			Assert::AreEqual(g->Set(1234), true); //True
 		};
 
 		[TestMethod]
 		void TestMethodBull()
 		{
 			Guess^ g = gcnew Guess();
-			Assert::AreEqual(g->Set(1234), true); //Верно
+			Assert::AreEqual(g->Set(1234), true); //True
 			g->TrySet(1234);
-			Assert::AreEqual(g->Bull, 4); // 4 цифры совпало 
+			Assert::AreEqual(g->Bull, 4); //4 digits matched
 			g->TrySet(1256);
-			Assert::AreEqual(g->Bull , 2); // 2 цифры совпало 
+			Assert::AreEqual(g->Bull, 2); //2 digits matched
 			g->TrySet(9874);
-			Assert::AreEqual(g->Bull, 1); // 1 цифра совпала
+			Assert::AreEqual(g->Bull, 1); //1 digit matched
 		};
 
 		[TestMethod]
 		void TestMethodCow()
 		{
 			Guess^ g = gcnew Guess();
-			Assert::AreEqual(g->Set(1234), true); //Верно
+			Assert::AreEqual(g->Set(1234), true); //True
 			g->TrySet(4321);
-			Assert::AreEqual(g->Cow, 4); // 4 цифры не на своих местах
+			Assert::AreEqual(g->Cow, 4); //4 digits not matched
 			g->TrySet(5621);
-			Assert::AreEqual(g->Cow, 2); // 2 цифры не на своих местах
+			Assert::AreEqual(g->Cow, 2); //2 digits not matched
 		};
 
 		[TestMethod]
 		void TestMethodHistory()
 		{
 			Guess^ g = gcnew Guess();
-			Assert::AreEqual(g->Set(1234), true); //Верно
+			Assert::AreEqual(g->Set(1234), true); //True
 			g->TrySet(4321);
 			g->TrySet(5621);
 			List<String^>^ expected = gcnew List<String^>();
@@ -79,8 +79,5 @@ namespace UnitTest
 			for (int k = 0; k < g->History->Count; k++)
 				Assert::AreEqual(expected[k], g->History[k]);
 		};
-
-
-
 	};
 }
