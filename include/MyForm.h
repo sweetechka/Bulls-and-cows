@@ -498,6 +498,8 @@ namespace Bullsandcowsproject {
 			}
 			else
 			{
+				groupBoxLeft->Enabled = true;
+				groupBoxRight->Enabled = checkBox->Checked;
 				LeftPlayer->SetRandom();
 				RightPlayer->SetRandom();
 				label->Visible = false;
