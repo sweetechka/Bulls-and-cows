@@ -437,7 +437,7 @@ namespace Bullsandcowsproject {
 					Play = false;
 				}
 
-				if (checkBox->Checked) //Игра вдвоем - передать ход
+				if (checkBox->Checked) //Pass the try
 				{
 					label->Text = "===>";
 					groupBoxLeft->Enabled = false;
