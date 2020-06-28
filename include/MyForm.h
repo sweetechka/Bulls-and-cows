@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Guess.h" //Ð£Ð³Ð°Ð´Ð°Ð¹ÐºÐ°
+#include "Guess.h" //Ugadayka
 
 namespace Bullsandcowsproject {
 
@@ -138,7 +138,7 @@ namespace Bullsandcowsproject {
 			this->groupBoxLeft->Size = System::Drawing::Size(269, 433);
 			this->groupBoxLeft->TabIndex = 3;
 			this->groupBoxLeft->TabStop = false;
-			this->groupBoxLeft->Text = L"Ð›ÐµÐ²Ñ‹Ð¹";
+			this->groupBoxLeft->Text = L"Ëåâûé";
 
 
 			// groupBoxRight
@@ -154,7 +154,7 @@ namespace Bullsandcowsproject {
 			this->groupBoxRight->Size = System::Drawing::Size(269, 433);
 			this->groupBoxRight->TabIndex = 5;
 			this->groupBoxRight->TabStop = false;
-			this->groupBoxRight->Text = L"ÐŸÑ€Ð°Ð²Ñ‹Ð¹";
+			this->groupBoxRight->Text = L"Ïðàâûé";
 			
 
 			// pictureBoxBull
@@ -182,7 +182,7 @@ namespace Bullsandcowsproject {
 			this->buttonSetLeft->Name = L"buttonSetLeft";
 			this->buttonSetLeft->Size = System::Drawing::Size(84, 23);
 			this->buttonSetLeft->TabIndex = 6;
-			this->buttonSetLeft->Text = L"Ð—Ð°Ð´Ð°Ñ‚ÑŒ Ñ‡Ð¸ÑÐ»Ð¾";
+			this->buttonSetLeft->Text = L"Çàäàòü ÷èñëî";
 			this->buttonSetLeft->UseVisualStyleBackColor = true;
 			this->buttonSetLeft->Click += gcnew System::EventHandler(this, &MyForm::buttonSetLeft_Click);
 
@@ -192,7 +192,7 @@ namespace Bullsandcowsproject {
 			this->buttonSetRight->Name = L"buttonSetRight";
 			this->buttonSetRight->Size = System::Drawing::Size(84, 23);
 			this->buttonSetRight->TabIndex = 6;
-			this->buttonSetRight->Text = L"Ð—Ð°Ð´Ð°Ñ‚ÑŒ Ñ‡Ð¸ÑÐ»Ð¾";
+			this->buttonSetRight->Text = L"Çàäàòü ÷èñëî";
 			this->buttonSetRight->UseVisualStyleBackColor = true;
 			this->buttonSetRight->Click += gcnew System::EventHandler(this, &MyForm::buttonSetRight_Click);
 
@@ -202,7 +202,7 @@ namespace Bullsandcowsproject {
 			this->buttonRandomLeft->Name = L"buttonRandomLeft";
 			this->buttonRandomLeft->Size = System::Drawing::Size(65, 23);
 			this->buttonRandomLeft->TabIndex = 4;
-			this->buttonRandomLeft->Text = L"Ð¡Ð»ÑƒÑ‡Ð°Ð¹Ð½Ð¾";
+			this->buttonRandomLeft->Text = L"Ñëó÷àéíî";
 			this->buttonRandomLeft->UseVisualStyleBackColor = true;
 			this->buttonRandomLeft->Click += gcnew System::EventHandler(this, &MyForm::buttonRandomLeft_Click);
 
@@ -212,7 +212,7 @@ namespace Bullsandcowsproject {
 			this->buttonRandomRight->Name = L"buttonRandomRight";
 			this->buttonRandomRight->Size = System::Drawing::Size(62, 23);
 			this->buttonRandomRight->TabIndex = 5;
-			this->buttonRandomRight->Text = L"Ð¡Ð»ÑƒÑ‡Ð°Ð¹Ð½Ð¾";
+			this->buttonRandomRight->Text = L"Ñëó÷àéíî";
 			this->buttonRandomRight->UseVisualStyleBackColor = true;
 			this->buttonRandomRight->Click += gcnew System::EventHandler(this, &MyForm::buttonRandomRight_Click);
 
@@ -281,7 +281,7 @@ namespace Bullsandcowsproject {
 			this->checkBox->Name = L"checkBox";
 			this->checkBox->Size = System::Drawing::Size(92, 17);
 			this->checkBox->TabIndex = 4;
-			this->checkBox->Text = L"Ð˜Ð³Ñ€Ð° Ð²Ð´Ð²Ð¾ÐµÐ¼";
+			this->checkBox->Text = L"Èãðà âäâîåì";
 			this->checkBox->UseVisualStyleBackColor = true;
 			this->checkBox->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox_CheckedChanged);
 
@@ -291,7 +291,7 @@ namespace Bullsandcowsproject {
 			this->buttonStart->Name = L"buttonStart";
 			this->buttonStart->Size = System::Drawing::Size(88, 23);
 			this->buttonStart->TabIndex = 0;
-			this->buttonStart->Text = L"ÐÐ°Ñ‡Ð°Ð»Ð¸";
+			this->buttonStart->Text = L"Íà÷àëè";
 			this->buttonStart->UseVisualStyleBackColor = true;
 			this->buttonStart->Click += gcnew System::EventHandler(this, &MyForm::buttonStart_Click);
 
@@ -340,7 +340,7 @@ namespace Bullsandcowsproject {
 			this->MaximumSize = System::Drawing::Size(658, 472);
 			this->MinimizeBox = false;
 			this->Name = L"MyForm";
-			this->Text = L"Ð‘Ñ‹ÐºÐ¸ Ð¸ ÐºÐ¾Ñ€Ð¾Ð²Ñ‹";
+			this->Text = L"Áûêè è êîðîâû";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxLeft))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxRight))->EndInit();
@@ -425,19 +425,19 @@ namespace Bullsandcowsproject {
 				int::TryParse(textBoxLeft->Text, value);
 				if (!LeftPlayer->TrySet(value))
 				{
-					MessageBox::Show("ÐÐµ Ð³Ð¾Ð´Ð¸Ñ‚ÑÑ");
+					MessageBox::Show("Íå ãîäèòñÿ");
 					return;
 				}
 				CopyHistory(LeftPlayer, listBoxLeft);
-				pictureBoxLeft->Refresh(); //ÐžÐ±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÑƒ
+				pictureBoxLeft->Refresh(); //Îáíîâèòü êàðòèíêó
 
 				if (LeftPlayer->Bull == 4)
 				{
-					MessageBox::Show("Ð’Ñ‹Ð¸Ð³Ñ€Ð°Ð» Ð›Ð•Ð’Ð«Ð™");
+					MessageBox::Show("Âûèãðàë ËÅÂÛÉ");
 					Play = false;
 				}
 
-				if (checkBox->Checked) //Ð˜Ð³Ñ€Ð° Ð²Ð´Ð²Ð¾ÐµÐ¼ - Ð¿ÐµÑ€ÐµÐ´Ð°Ñ‚ÑŒ Ñ…Ð¾Ð´
+				if (checkBox->Checked) //Pass the try
 				{
 					label->Text = "===>";
 					groupBoxLeft->Enabled = false;
@@ -459,14 +459,14 @@ namespace Bullsandcowsproject {
 				int::TryParse(textBoxRight->Text, value);
 				if (!RightPlayer->TrySet(value))
 				{
-					MessageBox::Show("ÐÐµ Ð³Ð¾Ð´Ð¸Ñ‚ÑÑ");
+					MessageBox::Show("Íå ãîäèòñÿ");
 					return;
 				}
 				CopyHistory(RightPlayer, listBoxRight);
 				pictureBoxRight->Refresh();
 				if (RightPlayer->Bull == 4)
 				{
-					MessageBox::Show("Ð’Ñ‹Ð¸Ð³Ñ€Ð°Ð» ÐŸÐ ÐÐ’Ð«Ð™");
+					MessageBox::Show("Âûèãðàë ÏÐÀÂÛÉ");
 					Play = false;
 				}
 
@@ -494,7 +494,7 @@ namespace Bullsandcowsproject {
 				groupBoxRight->Enabled = false;
 				textBoxLeft->Focus();
 				label->Visible = true;
-				buttonStart->Text = "ÐÐ°Ð´Ð¾ÐµÐ»Ð¾";
+				buttonStart->Text = "Íàäîåëî";
 			}
 			else
 			{
@@ -503,7 +503,9 @@ namespace Bullsandcowsproject {
 				LeftPlayer->SetRandom();
 				RightPlayer->SetRandom();
 				label->Visible = false;
-				buttonStart->Text = "ÐÐ°Ñ‡Ð°Ð»Ð¸";
+				buttonStart->Text = "Íà÷àëè";
+				textBoxLeft->Text = "1234";
+				textBoxRight->Text = "1234";
 				Play = false;
 			}
 			Refresh();
@@ -515,7 +517,7 @@ namespace Bullsandcowsproject {
 		{
 			if (Play)
 			{
-				MessageBox::Show("ÐœÑ‹ Ð¸Ð³Ñ€Ð°ÐµÐ¼!");
+				MessageBox::Show("Ìû èãðàåì!");
 				return;
 			}
 			LeftPlayer->SetRandom();
@@ -527,7 +529,7 @@ namespace Bullsandcowsproject {
 		private: System::Void buttonRandomRight_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (Play)
 			{
-				MessageBox::Show("ÐœÑ‹ Ð¸Ð³Ñ€Ð°ÐµÐ¼!");
+				MessageBox::Show("Ìû èãðàåì!");
 				return;
 			}
 			RightPlayer->SetRandom();
@@ -540,13 +542,13 @@ namespace Bullsandcowsproject {
 		{
 			if (Play)
 			{
-				MessageBox::Show("ÐœÑ‹ Ð¸Ð³Ñ€Ð°ÐµÐ¼!");
+				MessageBox::Show("Ìû èãðàåì!");
 				return;
 			}
 			int value = 0;
 			int::TryParse(textBoxLeft->Text, value);
 			if (!LeftPlayer->Set(value))
-				MessageBox::Show("ÐÐµ Ð³Ð¾Ð´Ð¸Ñ‚ÑÑ");
+				MessageBox::Show("Íå ãîäèòñÿ");
 			else
 				textBoxLeft->Text = "1234";
 		}
@@ -556,13 +558,13 @@ namespace Bullsandcowsproject {
 		private: System::Void buttonSetRight_Click(System::Object^ sender, System::EventArgs^ e) {
 			if (Play)
 			{
-				MessageBox::Show("ÐœÑ‹ Ð¸Ð³Ñ€Ð°ÐµÐ¼!");
+				MessageBox::Show("Ìû èãðàåì!");
 				return;
 			}
 			int value = 0;
 			int::TryParse(textBoxRight->Text, value);
 			if (!RightPlayer->Set(value))
-				MessageBox::Show("ÐÐµ Ð³Ð¾Ð´Ð¸Ñ‚ÑÑ");
+				MessageBox::Show("Íå ãîäèòñÿ");
 			else
 				textBoxRight->Text = "1234";
 
