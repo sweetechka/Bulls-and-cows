@@ -504,6 +504,8 @@ namespace Bullsandcowsproject {
 				RightPlayer->SetRandom();
 				label->Visible = false;
 				buttonStart->Text = "Начали";
+				textBoxLeft->Text = "1234";
+				textBoxRight->Text = "1234";
 				Play = false;
 			}
 			Refresh();
@@ -519,6 +521,7 @@ namespace Bullsandcowsproject {
 				return;
 			}
 			LeftPlayer->SetRandom();
+			textBoxLeft->Text = "1234";
 		}
 
 
@@ -530,6 +533,7 @@ namespace Bullsandcowsproject {
 				return;
 			}
 			RightPlayer->SetRandom();
+			textBoxRight->Text = "1234";
 		}
 
 
