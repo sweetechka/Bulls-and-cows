@@ -519,6 +519,7 @@ namespace Bullsandcowsproject {
 				return;
 			}
 			LeftPlayer->SetRandom();
+			textBoxLeft->Text = "1234";
 		}
 
 
@@ -530,6 +531,7 @@ namespace Bullsandcowsproject {
 				return;
 			}
 			RightPlayer->SetRandom();
+			textBoxRight->Text = "1234";
 		}
 
 
